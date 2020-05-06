@@ -1,0 +1,23 @@
+pipeline { 
+    agent any 
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('Build') { 
+            steps { 
+                echo 'hello ' 
+            }
+        }
+        stage('Test'){
+            steps {
+                git clone -b develop https://rspca.git.beanstalkapp.com/srm.git 
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'ls -l'
+            }
+        }
+    }
+}
